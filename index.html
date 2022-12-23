@@ -15,6 +15,23 @@
 </head>
 
 <body>
+    <script>
+        const observer = new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+                const domContentLoadedTime =
+                    entry.domContentLoadedEventEnd - entry.domContentLoadedEventStart;
+                console.log(
+                    `${entry.name}: DOMContentLoaded processing time: ${domContentLoadedTime}ms`
+                );
+                const loadEventTime = entry.loadEventEnd - entry.loadEventStart;
+                if (loadEventTime > 0) {
+                    console.log(`${entry.name}: load event handler time: ${loadEventTime}ms`);
+                }
+            });
+        });
+
+        observer.observe({ type: "navigation", buffered: true });
+    </script>
     <div class="wrapper">
         <div class="mashhead" style="background: url('./img/header-background.jpg') top center;">
             <div class="mashhead__header header">
