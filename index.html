@@ -24,9 +24,8 @@
                     `${entry.name}: DOMContentLoaded processing time: ${domContentLoadedTime}ms`
                 );
                 const loadEventTime = entry.loadEventEnd - entry.loadEventStart;
-                if (loadEventTime > 0) {
-                    console.log(`${entry.name}: load event handler time: ${loadEventTime}ms`);
-                }
+                console.log(`${entry.name}: load event handler time: ${loadEventTime}ms`);
+
             });
         });
 
